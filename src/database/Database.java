@@ -7,23 +7,25 @@ import java.sql.Timestamp;
 
 public  interface Database {
 
-	public void databaseConnection() throws SQLException;
+	public void databaseConnection() throws SQLException, ClassNotFoundException;
     
-    public void closeConnection(); // Do we need this method to close connection to the database or is it already included in the Java.connection;
+    public void closeConnection();
     
-    public ResultSet executeQuery(String query) throws SQLException; // Not sure whether we need this method or not 
+    public ResultSet executeQuery(String query) throws SQLException; 
     
-    public int executeUpdate(String string) throws SQLException; // Not sure whether we need this method or not 
+    public int executeUpdate(String string) throws SQLException, ClassNotFoundException;
     
     public void queryCreateTables() throws SQLException;
     
-    public boolean queryValidateEmail(String email); 
+    public String queryFindByEmail(String email); 
     
     public boolean queryValidateID(Integer id);
     
-    public int queryInsertUser(String userName, String email, String password);
+    public String queryInsertUser(String userName, String email, String password);
     
     public int verifyLoginCredentials(String email, String password);
+    
+    public List<String> queryDisplayUsers(int id) throws SQLException;
     
     public List<String[]> querySearchUsers(String name);
     
